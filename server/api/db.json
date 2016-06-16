@@ -1,5 +1,8 @@
 {
-    "test": [
-        {"id": 1}
+    "heroes": [
+        {"id": 1, "name": "Magneto"},
+        {"id": 2, "name": "Wolverine"},
+        {"id": 3, "name": "Captain America"},
+        {"id": 4, "name": "Batman"}
     ]
 }
