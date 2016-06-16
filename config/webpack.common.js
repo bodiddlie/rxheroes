@@ -1,13 +1,23 @@
 ﻿var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var CopyWebpackPlugin = (CopyWebpackPlugin = require('copy-webpack-plugin'), CopyWebpackPlugin.default || CopyWebpackPlugin);
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 var helpers = require('./helpers');
 
+const METADATA = {
+    title: 'City of Goodyear ITS Project Closeout Survey',
+    baseUrl: '/',
+    isDevServer: helpers.isWebpackDevServer()
+};
+
 module.exports = {
+    metadata: METADATA,
+
     entry: {
         'polyfills': './app/polyfills.ts',
         'vendor': './app/vendor.ts',
-        'app': './app/main.ts'
+        'main': './app/main.ts'
     },
 
     resolve: {
@@ -17,10 +27,25 @@ module.exports = {
     },
 
     module: {
+        preLoaders: [
+            {test: /\.ts$/, loader: 'tslint-loader', exclude: [helpers.root('node_modules')]},
+            {
+                test: /\.js$/,
+                loader: 'source-map-loader',
+                exclude: [
+                    helpers.root('node_modules/rxjs'),
+                    helpers.root('node_modules/@angular'),
+                    helpers.root('node_modules/@ngrx/router'),
+                    helpers.root('node_modules/@ngrx/core'),
+                    helpers.root('node_modules/@ngrx/effects'),
+                    helpers.root('node_modules/@ngrx/store')
+                ]
+            }
+        ],
         loaders: [
             {
                 test: /\.ts$/,
-                loader: 'ts',
+                loader: 'awesome-typescript-loader',
                 exclude: [/\.(spec|e2e)\.ts$/]
             },
             {
@@ -45,12 +70,22 @@ module.exports = {
     },
 
     plugins: [
+        new ForkCheckerPlugin(),
+        new webpack.optimize.OccurrenceOrderPlugin(true),
         new webpack.optimize.CommonsChunkPlugin({
-            name: ['app', 'vendor', 'polyfills']
+            name: ['polyfills', 'vendor'].reverse()
         }),
 
+        new CopyWebpackPlugin([{
+            from: 'assets',
+            to: 'assets',
+            ignore: [
+                '*.css'
+            ]
+        }]),
         new HtmlWebpackPlugin({
-            template: 'app/index.html'
+            template: 'app/index.html',
+            chunksSortMode: 'dependency'
         })
     ]
 };

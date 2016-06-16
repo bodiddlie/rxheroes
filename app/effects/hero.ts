@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
-import {Effect, StateUpdates} from '@ngrx/effects';
+import {Effect, StateUpdates, toPayload} from '@ngrx/effects';
+import {Router} from '@ngrx/router';
 
 import {AppState} from '../reducers';
 import {HeroActions} from '../actions';
@@ -10,11 +11,33 @@ export class HeroEffects {
     constructor (
         private update$: StateUpdates<AppState>,
         private heroActions: HeroActions,
-        private svc: HeroService
+        private svc: HeroService,
+        private router: Router
     ) {}
 
     @Effect() loadHeroes$ = this.update$
         .whenAction(HeroActions.LOAD_HEROES)
         .switchMap(() => this.svc.getHeroes())
         .map(heroes => this.heroActions.loadHeroesSuccess(heroes));
+
+    @Effect() getHero$ = this.update$
+        .whenAction(HeroActions.GET_HERO)
+        .map<string>(toPayload)
+        .switchMap(id => this.svc.getHero(id))
+        .map(hero => this.heroActions.getHeroSuccess(hero));
+
+    @Effect() saveHero$ = this.update$
+        .whenAction(HeroActions.SAVE_HERO)
+        .map(update => update.action.payload)
+        .switchMap(hero => this.svc.saveHero(hero))
+        .map(hero => {
+            this.router.back();
+            return this.heroActions.saveHeroSuccess(hero);
+        });
+
+    @Effect() deleteHero$ = this.update$
+        .whenAction(HeroActions.DELETE_HERO)
+        .map(update => update.action.payload)
+        .switchMap(hero => this.svc.deleteHero(hero))
+        .map(hero => this.heroActions.deleteHeroSuccess(hero));
 }

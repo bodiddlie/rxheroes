@@ -1,16 +1,21 @@
 import {Action} from '@ngrx/store';
-import {Observable} from 'rxjs/Observable';
 
 import {Hero} from '../models';
 import {HeroActions} from '../actions';
 
-export type HeroState = Hero[];
+export type HeroState = Hero;
 
-const initialState: HeroState = [];
+const initialState: HeroState = {
+    id: 0,
+    name: ''
+};
 
-export default function (state = initialState, action:Action): HeroState {
+export default function (state = initialState, action: Action): HeroState {
     switch (action.type) {
-        case HeroActions.LOAD_HEROES_SUCCESS: {
+        case HeroActions.RESET_BLANK_HERO: {
+            return initialState;
+        }
+        case HeroActions.GET_HERO_SUCCESS: {
             return action.payload;
         }
         default: {

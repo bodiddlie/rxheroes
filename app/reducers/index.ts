@@ -3,12 +3,15 @@ import {compose} from '@ngrx/core/compose';
 import {storeLogger} from 'ngrx-store-logger';
 import {combineReducers} from '@ngrx/store';
 
+import heroListReducer, * as fromHeroList from './hero-list';
 import heroReducer, * as fromHero from './hero';
 
 export interface AppState {
-    heroes: fromHero.HeroState
+    heroes: fromHeroList.HeroListState;
+    hero: fromHero.HeroState;
 };
 
 export default compose(combineReducers)({
-    heroes: heroReducer
+    heroes: heroListReducer,
+    hero: heroReducer
 });

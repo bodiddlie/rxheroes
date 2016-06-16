@@ -1,8 +1,20 @@
 {
-    "heroes": [
-        {"id": 1, "name": "Magneto"},
-        {"id": 2, "name": "Wolverine"},
-        {"id": 3, "name": "Captain America"},
-        {"id": 4, "name": "Batman"}
-    ]
+  "heroes": [
+    {
+      "id": 1,
+      "name": "Magneto"
+    },
+    {
+      "id": 2,
+      "name": "Doctor Strange"
+    },
+    {
+      "id": 3,
+      "name": "Batman"
+    },
+    {
+      "id": 4,
+      "name": "Captain America"
+    }
+  ]
 }

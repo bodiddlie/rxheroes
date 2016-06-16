@@ -1,6 +1,6 @@
 import {Routes} from '@ngrx/router';
 
-import {Dashboard, Heroes} from './components';
+import {Dashboard, Heroes, HeroDetail} from './components';
 
 const routes: Routes = [
     {
@@ -10,6 +10,10 @@ const routes: Routes = [
     {
         path: '/heroes',
         component: Heroes
+    },
+    {
+        path: '/detail/:id',
+        component: HeroDetail
     }
 ];
 

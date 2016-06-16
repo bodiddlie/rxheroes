@@ -8,15 +8,15 @@
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": false,
-    "suppressImplicitAnyIndexErrors": true
+    "suppressImplicitAnyIndexErrors": true,
+    "noEmitHelpers": true
   },
   "exclude": [
-    "node_modules",
-    "typings/main",
-    "typings/main.d.ts"
+    "node_modules"
   ],
-  "filesGlob": [
-    "!./node_modules/**",
-    "./typings/index.d.ts"
-  ]
+  "awesomeTypescriptLoaderOptions": {
+    "forkChecker": true
+  },
+  "compileOnSave": false,
+  "buildOnSave": false
 }

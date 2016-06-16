@@ -19,4 +19,59 @@ export class HeroActions {
             payload: heroes
         };
     }
+
+    static GET_HERO = '[Hero] Get Hero';
+    getHero(id): Action {
+        return {
+            type: HeroActions.GET_HERO,
+            payload: id
+        };
+    }
+
+    static GET_HERO_SUCCESS = '[Hero] Get Hero Success';
+    getHeroSuccess(hero): Action {
+        return {
+            type: HeroActions.GET_HERO_SUCCESS,
+            payload: hero
+        };
+    }
+
+    static RESET_BLANK_HERO = '[Hero] Reset Blank Hero';
+    resetBlankHero(): Action {
+        return {
+            type: HeroActions.RESET_BLANK_HERO
+        };
+    }
+
+    static SAVE_HERO = '[Hero] Save Hero';
+    saveHero(hero): Action {
+        return {
+            type: HeroActions.SAVE_HERO,
+            payload: hero
+        };
+    }
+
+    static SAVE_HERO_SUCCESS = '[Hero] Save Hero Success';
+    saveHeroSuccess(hero): Action {
+        return {
+            type: HeroActions.SAVE_HERO_SUCCESS,
+            payload: hero
+        };
+    }
+
+    static DELETE_HERO = '[Hero] Delete Hero';
+    deleteHero(hero): Action {
+        return {
+            type: HeroActions.DELETE_HERO,
+            payload: hero
+        };
+    }
+
+    static DELETE_HERO_SUCCESS = '[Hero] Delete Hero Success';
+    deleteHeroSuccess(hero): Action {
+        return {
+            type: HeroActions.DELETE_HERO_SUCCESS,
+            payload: hero
+        };
+    }
 }

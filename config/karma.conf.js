@@ -6,12 +6,14 @@ module.exports = function (config) {
 
         frameworks: ['jasmine'],
 
+        exclude: [],
+
         files: [
-            { pattern: './config/karma-test-shim.js', watched: false }
+            { pattern: './config/spec-bundle.js', watched: false }
         ],
 
         preprocessors: {
-            './config/karma-test-shim.js': ['coverage', 'webpack', 'sourcemap']
+            './config/spec-bundle.js': ['coverage', 'webpack', 'sourcemap']
         },
 
         webpack: webpackConfig,
