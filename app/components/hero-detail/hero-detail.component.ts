@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, OnDestroy, Output} from '@angular/core';
-import {RouteParams} from '@ngrx/router';
+import {Router, RouteParams} from '@ngrx/router';
 import {Store} from '@ngrx/store';
 import {Subscription} from 'rxjs/Subscription';
 import {Observable} from 'rxjs/Observable';
@@ -30,7 +30,8 @@ export class HeroDetail implements OnInit, OnDestroy {
     constructor(
         private store: Store<AppState>,
         private routeParams: RouteParams,
-        private heroActions: HeroActions
+        private heroActions: HeroActions,
+        private router: Router
     ) {
         this.hero = store.select('hero');
     }
@@ -59,6 +60,11 @@ export class HeroDetail implements OnInit, OnDestroy {
     }
 
     save(hero) {
-        this.store.dispatch(this.heroActions.saveHero(hero));
+        if (hero.id === 0) {
+            this.store.dispatch(this.heroActions.addHero(hero));
+        } else {
+            this.store.dispatch(this.heroActions.saveHero(hero));
+        }
+        this.goBack(hero);
     }
 }

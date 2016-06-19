@@ -59,6 +59,22 @@ export class HeroActions {
         };
     }
 
+    static ADD_HERO = '[Hero] Add Hero';
+    addHero(hero): Action {
+        return {
+            type: HeroActions.ADD_HERO,
+            payload: hero
+        };
+    }
+
+    static ADD_HERO_SUCCESS = '[Hero] Add Hero Success';
+    addHeroSuccess(hero): Action {
+        return {
+            type: HeroActions.ADD_HERO_SUCCESS,
+            payload: hero
+        };
+    }
+
     static DELETE_HERO = '[Hero] Delete Hero';
     deleteHero(hero): Action {
         return {

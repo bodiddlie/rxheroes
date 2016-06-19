@@ -30,10 +30,13 @@ export class HeroEffects {
         .whenAction(HeroActions.SAVE_HERO)
         .map(update => update.action.payload)
         .switchMap(hero => this.svc.saveHero(hero))
-        .map(hero => {
-            this.router.back();
-            return this.heroActions.saveHeroSuccess(hero);
-        });
+        .map(hero => this.heroActions.saveHeroSuccess(hero));
+
+    @Effect() addHero$ = this.update$
+        .whenAction(HeroActions.ADD_HERO)
+        .map(update => update.action.payload)
+        .switchMap(hero => this.svc.saveHero(hero))
+        .map(hero => this.heroActions.addHeroSuccess(hero));
 
     @Effect() deleteHero$ = this.update$
         .whenAction(HeroActions.DELETE_HERO)
