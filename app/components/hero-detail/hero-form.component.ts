@@ -2,20 +2,7 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
     selector: 'rx-hero-form',
-    template: `
-        <div *ngIf="hero">
-            <h2>{{hero.name}}</h2>
-            <div>
-                <label>id: </label>{{hero.id}}
-            </div>
-            <div>
-                <label>name: </label>
-                <input [(ngModel)]="hero.name" placeholder="name" />
-            </div>
-            <button (click)="back.emit()">Back</button>
-            <button (click)="save.emit(hero)">Save</button>
-        </div>
-    `,
+    template: require('./hero-form.component.html'),
     styles: [require('./hero-form.component.css')]
 })
 export class HeroForm {

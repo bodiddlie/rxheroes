@@ -1,0 +1,17 @@
+<h2>My Heroes</h2>
+<rx-hero-list
+    [heroes]="heroes | async"
+    [selectedHero]="selectedHero"
+    (onSelect)="select($event)"
+    (onDelete)="delete($event)"
+></rx-hero-list>
+
+<button (click)="addHero()">Add New Hero</button>
+<div *ngIf="addingHero">
+    <rx-hero-detail (close)="close()"></rx-hero-detail>
+</div>
+
+<div *ngIf="selectedHero">
+    <h2>{{selectedHero.name | uppercase}} is my hero</h2>
+    <button (click)="gotoDetail()">View Details</button>
+</div>

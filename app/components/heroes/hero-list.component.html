@@ -1,0 +1,12 @@
+<ul class="heroes">
+    <li 
+        *ngFor="let hero of heroes"
+        (click)="onSelect.emit(hero)"
+        [class.selected]="hero === selectedHero"
+    >
+        <span class="hero-element">
+            <span class="badge">{{hero.id}}</span> {{hero.name}}
+        </span>
+        <button class="delete-button" (click)="delete($event, hero)">Delete</button>
+    </li>
+</ul> 
