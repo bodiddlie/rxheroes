@@ -20,10 +20,11 @@ export default function (state = initialState, action: Action): HeroListState {
         case HeroActions.SAVE_HERO_SUCCESS: {
             let index = _.findIndex(state, {id: action.payload.id});
             if (index >= 0) {
-                return state
-                    .slice(0, index)
-                    .concat([action.payload])
-                    .concat(state.slice(index + 1));
+                return [
+                    ...state.slice(0, index),
+                    action.payload,
+                    ...state.slice(index + 1)
+                ];
             }
             return state;
         }
