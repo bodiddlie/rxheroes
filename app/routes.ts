@@ -1,4 +1,6 @@
-import {Routes} from '@ngrx/router';
+//import {Routes} from '@ngrx/router';
+import {Routes, RouterModule} from '@angular/router';
+import {ModuleWithProviders} from '@angular/core';
 
 import {Dashboard, Heroes, HeroDetail} from './components';
 
@@ -17,4 +19,5 @@ const routes: Routes = [
     }
 ];
 
-export default routes;
+//export default routes;
+export const routing: ModuleWithProviders = RouterModule.forRoot(routes);

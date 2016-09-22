@@ -1,4 +1,5 @@
-﻿import { bootstrap } from '@angular/platform-browser-dynamic';
+﻿/*
+import { bootstrap } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
 import { provideStore } from '@ngrx/store';
 import { runEffects } from '@ngrx/effects';
@@ -22,3 +23,9 @@ bootstrap(AppComponent, [
     services,
     actions,
 ]);
+*/
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+
+import {AppModule} from './app.module';
+
+platformBrowserDynamic().bootstrapModule(AppModule);

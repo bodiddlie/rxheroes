@@ -173,3 +173,4 @@ typings/
 # Visual Studio 2015 settings folder
 .vs/
 dist/
+.vscode/

@@ -11,10 +11,10 @@ import '../assets/styles/styles.css';
     template: `
         <h1>{{title}}</h1>
         <nav>
-            <a linkTo="/">Dashboard</a>
-            <a linkTo="/heroes">Heroes</a>
+            <a routerLink="/">Dashboard</a>
+            <a routerLink="/heroes">Heroes</a>
         </nav>
-        <route-view></route-view>
+        <router-outlet></router-outlet>
     `,
     styles: [require('./app.component.css')]
 })

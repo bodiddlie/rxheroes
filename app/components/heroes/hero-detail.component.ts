@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, OnDestroy, Output} from '@angular/core';
-import {Router, RouteParams} from '@ngrx/router';
+import {Router, ActivatedRoute, Params} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {Subscription} from 'rxjs/Subscription';
 import {Observable} from 'rxjs/Observable';
@@ -29,7 +29,7 @@ export class HeroDetail implements OnInit, OnDestroy {
 
     constructor(
         private store: Store<AppState>,
-        private routeParams: RouteParams,
+        private route: ActivatedRoute,
         private heroActions: HeroActions,
         private router: Router
     ) {
@@ -37,7 +37,7 @@ export class HeroDetail implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.idSub = this.routeParams
+        this.idSub = this.route.params
             .select<string>('id')
             .subscribe(id => {
                 if (id) {

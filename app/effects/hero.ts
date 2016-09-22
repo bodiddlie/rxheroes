@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Effect, StateUpdates, toPayload} from '@ngrx/effects';
-import {Router} from '@ngrx/router';
+import {Router} from '@angular/router';
 
 import {AppState} from '../reducers';
 import {HeroActions} from '../actions';

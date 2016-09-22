@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {Store} from '@ngrx/store';
-import {Router} from '@ngrx/router';
+import {Router} from '@angular/router';
 
 import {AppState} from '../../reducers';
 import {HeroActions} from '../../actions';
@@ -24,6 +24,6 @@ export class Dashboard {
     }
 
     gotoDetail(hero: Hero) {
-        this.router.go('/detail/' + hero.id);
+        this.router.navigate(['/detail/', hero.id]);
     }
 }

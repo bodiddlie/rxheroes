@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {Store} from '@ngrx/store';
-import {Router} from '@ngrx/router';
+import {Router} from '@angular/router';
 
 import {AppState} from '../../reducers';
 import {HeroActions} from '../../actions';
 import {HeroList} from './hero-list.component';
-import {HeroDetail} from '../hero-detail';
+import {HeroDetail} from './hero-detail.component';
 
 @Component({
     selector: 'rx-heroes',
@@ -45,6 +45,6 @@ export class Heroes {
     }
 
     gotoDetail() {
-        this.router.go('/detail/' + this.selectedHero.id);
+        this.router.navigate(['/detail/', this.selectedHero.id]);
     }
 }
