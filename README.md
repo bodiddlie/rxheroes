@@ -1,10 +1,10 @@
-#RX Heroes
-##The Angular 2 Tour of Heroes Tutorial app rewritten with @ngrx/store
+# RX Heroes
+## The Angular 2 Tour of Heroes Tutorial app rewritten with @ngrx/store
 
 See my [post about this](https://bodiddlie.github.io/ng-2-toh-with-ngrx-suite/) for the full
 story.
 
-##Update - 09/25/2016
+## Update - 09/25/2016
 This repo has been updated to work with the final release of Angular 2 final. It's not perfect, and I would suggest that you NOT consider this
 as an example of best practices, but it will give you an idea of how these pieces fit together. Here's a quick rundown of what changed:
 
