@@ -8,7 +8,7 @@ import {HeroService} from '../services';
 @Injectable()
 export class HeroEffects {
     constructor (
-        private update$: Actions
+        private update$: Actions,
         private heroActions: HeroActions,
         private svc: HeroService,
     ) {}
